@@ -7,6 +7,11 @@ import {
   classTodoReducers
   classTodoSagas
 } from './classTodoRedux' 
+import {
+  userTodoStatic
+  userTodoReducers
+  userTodoSagas  
+} from './userTodoRedux'
 
 target.classTodo = ->
   classTodo()
@@ -14,6 +19,7 @@ target.classTodo = ->
 target.userTodo = ->
   userTodo()
 
+# class todo redux
 target.classTodoStatic = ->
   classTodoStatic()
 
@@ -22,3 +28,13 @@ target.classTodoReducers = ->
 
 target.classTodoSagas = ->
   classTodoSagas()
+
+# user todo redux
+target.userTodoStatic = ->
+  userTodoStatic()
+
+target.userTodoReducers = ->
+  userTodoReducers()
+
+target.userTodoSagas = ->
+  userTodoSagas()
