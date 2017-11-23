@@ -2,4 +2,4 @@
 
 require('coffee-require/register');
 
-module.exports = require('../src/app/route');
+module.exports = require('../src/app/router');

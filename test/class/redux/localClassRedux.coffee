@@ -42,7 +42,7 @@ classTodoReducers = ->
 
   myStore.onsubscribe()
 
-classTodoSagas = ->
+localClassReduxSagas = ->
   subscriber = (
     prevState
     nextState
@@ -59,28 +59,26 @@ classTodoSagas = ->
       async: subscriber
   }
   
-  myStore.dispatch actions.classCreate {
+  myStore.dispatch actions.classFetch
     headers: config.headers
-    uri: config.uri
-    className: config.className
+    uri: "http://192.168.0.192:7001/classes/5a151d84ee920a004468bf54" 
     data:
-      company: '武汉和风和乐有限公司'
-      main: '旅游、租房'
-      location: '武汉'
-  }
+      className: config.className
+      objectId: '5a151d84ee920a004468bf54'
+
 
   # myStore.dispatch actions.classFetch {
   #   headers: config.headers
   #   uri: config.uri
   #   className: config.className
-  #   objectId: '5a0fca8c2f301e006513d681'
+  #   objectId: '5a123c52ee920a004537c6a0'
   # }
 
   # myStore.dispatch actions.classPatch {
   #   headers: config.headers
   #   uri: config.uri
   #   className: config.className
-  #   objectId: '5a0fca8c2f301e006513d681'
+  #   objectId: '5a123c52ee920a004537c6a0'
   #   data:
   #     company: '阿里巴巴有限公司'
   #     main: '租房大佬'
@@ -91,12 +89,10 @@ classTodoSagas = ->
   #   headers: config.headers
   #   uri: config.uri
   #   className: config.className
-  #   objectId: '5a0fca8c2f301e006513d681'
+  #   objectId: '5a123c52ee920a004537c6a0'
   # }
 
 export {
-  classTodoStatic
-  classTodoReducers
-  classTodoSagas
+  localClassReduxSagas
 }
 

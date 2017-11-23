@@ -12,8 +12,6 @@
   "dependencies": {
     "user-todo-redux": "file:../userTodoRedux",
     "class-todo-redux": "file:../classTodoRedux",
-    "class-todo": "file:../classTodo",
-    "user-todo": "file:../userTodo",
     "coffee-require": "^0.0.3",
     "ddeyes": "^0.0.4",
     "egg": "^1.9.0",
