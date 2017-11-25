@@ -1,4 +1,4 @@
-import source from '../config/config.default.coffee'
+import source from '../config/config.default'
 import dd from 'ddeyes'
 
 export default (app) ->

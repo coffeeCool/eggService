@@ -1,11 +1,9 @@
 import source from '../config/config.default.coffee'
 import dd from 'ddeyes'
-import { services as getClassServ } from 'class-todo-redux/dist/bundle'
-classServ = getClassServ()
 
 export default (app) ->
 
-  class ClassesService extends app.Service
+  class TodosService extends app.Service
 
     constructor: (ctx) ->
       super ctx
@@ -29,18 +27,18 @@ export default (app) ->
       await @ctx.curl url, opts
 
     # create class todo and return this class todo
-    createClass: (params) ->
-      classServ.create(
-        {
-          headers: source.source.leanCloud.headers
-          uri: "#{source.source.leanCloud.classBaseUri}/#{source.source.leanCloud.className}?fetchWhenSave=true"
-          data: params
-        }
-      )
+    create: (params) ->
+      result = await @request "/#{params.className}?fetchWhenSave=true"
+      ,
+        method: 'post'
+        data: params
+        dataType: 'json'
+
+      result.data
 
 
     # get the class one todo information
-    getClassOneTodo: (params) ->
+    fetch: (params) ->
       result = await @request "/#{params.className}/#{params.objectId}"
       ,
         method: 'get'
@@ -49,8 +47,18 @@ export default (app) ->
 
       result.data
 
+    # get the class todos information
+    reload: (params) ->
+      result = await @request "/#{params.className}"
+      ,
+        method: 'get'
+        data: params
+        dataType: 'json'
+
+      result.data
+
     # updata the class todo
-    updateClassTodo: (params) ->
+    patch: (params) ->
       result = await @request "/#{params.className}/#{params.objectId}?fetchWhenSave=true"
       ,
         method: 'put'
@@ -60,7 +68,7 @@ export default (app) ->
       result.data
 
     # delete the class todo
-    deleteClassTodo: (params) ->
+    remove: (params) ->
       result = await @request "/#{params.className}/#{params.objectId}"
       ,
         method: 'delete'
@@ -68,4 +76,3 @@ export default (app) ->
         dataType: 'json'
 
       result.data
-

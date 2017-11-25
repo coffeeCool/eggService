@@ -1,11 +1,12 @@
 export default (app) ->
-  # leancloud class todo
-  app.post '/classes', app.controller.class.createClass
-  app.get '/classes/:id', app.controller.class.getClassOneTodo  
-  app.put '/classes/:id', app.controller.class.updateClassTodo
-  app.delete '/classes/:id', app.controller.class.deleteClassTodo
+  # leancloud todo
+  app.post '/todos', app.controller.todo.create
+  app.get '/todos/:id', app.controller.todo.fetch 
+  app.put '/todos/:id', app.controller.todo.patch
+  app.get '/todos', app.controller.todo.reload
+  app.delete '/todos/:id', app.controller.todo.remove
 
-  # leancloud user todo
+  # leancloud user
   app.post '/login', app.controller.user.login
   app.post '/users', app.controller.user.addTodo
   app.get '/users/:id', app.controller.user.oneTodo  
