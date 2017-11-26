@@ -12,7 +12,7 @@ import {
   redux_userTest
 } from 'user-todo-redux/dist/bundle'
 
-#### class todo ####
+########################### class todo ###########################
 # leanCloud service
 target.class_lc_service = ->
   LC_service()
@@ -29,25 +29,32 @@ target.class_redux_reducers = ->
   redux_test.reducersFuc()
 
 target.class_redux_sagas = ->
-  promiseFuc = ->
-    new Promise (resolve, reject) ->
-      redux_test.createFuc(resolve, reject)
-    .then (data) ->
-      await redux_test.sellp 2000
-      redux_test.fetchFuc data
 
-      await redux_test.sellp 2000
-      redux_test.patchFuc data
+  data = await redux_test.createFuc()
+  data
+  await redux_test.sellp 1000
+  await redux_test.fetchFuc data
 
-      await redux_test.sellp 2000
-      redux_test.reloadFuc()
+  await redux_test.sellp 1000
+  data_patch = await redux_test.patchFuc data
+  data_patch
 
-      await redux_test.sellp 2000
-      redux_test.removeFuc data
-      
-  promiseFuc()
+  await redux_test.sellp 1000
+  data_reload = await redux_test.reloadFuc()
+  data_reload
+  dd data_reload
 
-#### user ####
+  await redux_test.sellp 1000
+  await redux_test.removeFuc data.objectId
+  # await redux_test.sellp 1000
+  # ids = await redux_test.getIds(data_reload.results)
+  # for id in ids
+  #   await redux_test.removeFuc id
+  await redux_test.sellp 1000
+  await redux_test.reloadFuc()
+
+
+################################ user ############################
 # leancloud user service
 target.user_lc_service = ->
   LC_userService()
@@ -64,23 +71,24 @@ target.user_redux_reducers = ->
   redux_userTest.reducersFuc()
 
 target.user_redux_sagas = ->
-  promiseFuc = ->
-    new Promise (resolve, reject) ->
-      redux_userTest.createFuc(resolve, reject)
-    .then (data) ->
-      await redux_userTest.sellp 2000
-      redux_userTest.loginFuc data
+  data = await redux_userTest.createFuc()
+  data
 
-      await redux_userTest.sellp 2000
-      redux_userTest.fetchFuc data
+  await redux_userTest.sellp 1000
+  await redux_userTest.loginFuc data
 
-      # await redux_userTest.sellp 2000
-      # redux_userTest.patchFuc data
+  await redux_userTest.sellp 1000
+  await redux_userTest.fetchFuc data
 
-      await redux_userTest.sellp 2000
-      redux_userTest.reloadFuc()
+  await redux_userTest.sellp 1000
+  await redux_userTest.reloadFuc()
 
-      await redux_userTest.sellp 2000
-      redux_userTest.removeFuc data
-      
-  promiseFuc()
+  await redux_userTest.sellp 1000
+  data_patch = await redux_userTest.patchFuc data
+  data_patch
+
+  await redux_userTest.sellp 1000
+  await redux_userTest.removeFuc data_patch
+
+  await redux_userTest.sellp 1000
+  await redux_userTest.reloadFuc()
