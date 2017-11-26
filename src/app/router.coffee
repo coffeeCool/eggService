@@ -8,7 +8,8 @@ export default (app) ->
 
   # leancloud user
   app.post '/login', app.controller.user.login
-  app.post '/users', app.controller.user.addTodo
-  app.get '/users/:id', app.controller.user.oneTodo  
-  app.put '/users/:id', app.controller.user.updateTodo
-  app.delete '/users/:id', app.controller.user.deleteTodo
+  app.post '/users', app.controller.user.create
+  app.get '/users/:id', app.controller.user.fetch  
+  app.put '/users/:id', app.controller.user.patch
+  app.get '/users', app.controller.user.reload
+  app.delete '/users/:id', app.controller.user.remove

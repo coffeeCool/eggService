@@ -11,29 +11,29 @@ export default (app) ->
   
       ctx.body = await ctx.service.user.login ctx.request.body
 
-    todos: ->
+    create: ->
       { ctx } = @
 
-      ctx.body = await ctx.service.user.todos ctx.request.body
+      ctx.body = await ctx.service.user.create ctx.request.body
            
-    oneTodo: ->
+    fetch: ->
       { ctx } = @
       
-      ctx.body = await ctx.service.user.oneTodo ctx.request.body
+      ctx.body = await ctx.service.user.fetch ctx.request.body
       
-    addTodo: ->
+    patch: ->
       { ctx } = @
       
-      ctx.body = await ctx.service.user.addTodo ctx.request.body
+      ctx.body = await ctx.service.user.patch ctx.request.body
       
-    updateTodo: ->
-      { ctx } = @
-
-      ctx.body = await ctx.service.user.updateTodo ctx.request.body
-
-    deleteTodo: ->
+    reload: ->
       { ctx } = @
 
-      ctx.body = await ctx.service.user.deleteTodo ctx.request.body
+      ctx.body = await ctx.service.user.reload ctx.request.body
+
+    remove: ->
+      { ctx } = @
+
+      ctx.body = await ctx.service.user.remove ctx.request.body
         
   return UsersController

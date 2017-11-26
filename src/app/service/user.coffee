@@ -3,7 +3,7 @@ import dd from 'ddeyes'
 
 export default (app) ->
 
-  class todoService extends app.Service
+  class usersService extends app.Service
 
     constructor: (ctx) ->
       super ctx
@@ -36,8 +36,8 @@ export default (app) ->
 
       result.data
 
-    # todos
-    todos: (params) ->
+    # users
+    reload: (params) ->
       result = await @request "/users"
       ,
         method: 'get'
@@ -46,16 +46,16 @@ export default (app) ->
 
       result.data
 
-    # one todo
-    oneTodo: (params) ->
+    # fetch
+    fetch: (params) ->
       result = await @request "/users/#{params.objectId}"
       ,
         data: params
         
       result.data
 
-    # add todo
-    addTodo: (params) ->
+    # create
+    create: (params) ->
       result = await @request "/users"
       ,
         method: 'post'
@@ -64,8 +64,8 @@ export default (app) ->
       
       result.data
 
-    # update todo
-    updateTodo: (params) ->
+    # patch
+    patch: (params) ->
       result = await @request "/users/#{params.objectId}?fetchWhenSave=true"
       ,
         method: 'put'
@@ -76,8 +76,8 @@ export default (app) ->
 
       result.data
 
-    # delete todo
-    deleteTodo: (params) ->
+    # remove
+    remove: (params) ->
       result = await @request "/users/#{params.objectId}"
       ,
         method: 'delete'
@@ -87,5 +87,3 @@ export default (app) ->
         dataType: 'json'
 
       result.data
-
-
