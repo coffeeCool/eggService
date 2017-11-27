@@ -35,8 +35,7 @@ export default (app) ->
         dataType: 'json'
 
       result.data
-
-
+      
     # get the class one todo information
     fetch: (params) ->
       result = await @request "/#{params.className}/#{params.objectId}"
