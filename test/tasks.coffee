@@ -46,7 +46,6 @@ target.class_redux_sagas = ->
   # for id in ids
   #   await redux_test.removeFuc id
 
-
 ################################ user ############################
 # leancloud user service
 target.user_lc_service = ->
