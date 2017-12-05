@@ -15,7 +15,7 @@
     "class-todo-redux": "file:../classTodoRedux",
     "coffee-require": "^0.0.3",
     "ddeyes": "^0.0.4",
-    "egg": "^1.9.0",
+    "egg": "^2.0.0",
     "egg-bin": "^4.3.3",
     "egg-mock": "^3.12.2",
     "egg-validate": "^1.0.0",

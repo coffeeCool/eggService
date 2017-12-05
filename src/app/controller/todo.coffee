@@ -19,7 +19,8 @@ export default (app) ->
     reload: ->
       { ctx } = @
       
-      ctx.body = await ctx.service.todo.reload ctx.request.body
+      body = { className: 'Todos' }
+      ctx.body = await ctx.service.todo.reload body
 
     patch: ->
       { ctx } = @

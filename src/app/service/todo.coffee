@@ -48,6 +48,7 @@ export default (app) ->
 
     # get the class todos information
     reload: (params) ->
+      # dd params
       result = await @request "/#{params.className}"
       ,
         method: 'get'
