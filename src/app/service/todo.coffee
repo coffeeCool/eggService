@@ -2,9 +2,7 @@ import source from '../config/config.default.coffee'
 import dd from 'ddeyes'
 
 export default (app) ->
-
   class TodosService extends app.Service
-
     constructor: (ctx) ->
       super ctx
       @root = source.source.leanCloud.classBaseUri
@@ -48,7 +46,6 @@ export default (app) ->
 
     # get the class todos information
     reload: (params) ->
-      # dd params
       result = await @request "/#{params.className}"
       ,
         method: 'get'

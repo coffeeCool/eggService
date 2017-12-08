@@ -2,9 +2,7 @@ import source from '../config/config.default'
 import dd from 'ddeyes'
 
 export default (app) ->
-
   class usersService extends app.Service
-
     constructor: (ctx) ->
       super ctx
       @root = source.source.leanCloud.userBaseUri

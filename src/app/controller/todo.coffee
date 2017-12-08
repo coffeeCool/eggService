@@ -1,7 +1,5 @@
 export default (app) ->
-
   class TodosController extends app.Controller
-  
     constructor: (ctx) ->
       super ctx
       @
@@ -19,6 +17,7 @@ export default (app) ->
     reload: ->
       { ctx } = @
       
+      # 下次要修改掉
       body = { className: 'Todos' }
       ctx.body = await ctx.service.todo.reload body
 

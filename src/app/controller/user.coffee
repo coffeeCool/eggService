@@ -1,7 +1,5 @@
 export default (app) ->
-
   class UsersController extends app.Controller
-  
     constructor: (ctx) ->
       super ctx
       @

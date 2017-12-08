@@ -14,7 +14,4 @@ export default (app) ->
   app.get '/users', app.controller.user.reload
   app.delete '/users/:id', app.controller.user.remove
 
-  # wechat test
-  app.get '/oauth', app.controller.wechat.oauth
-  app.get '/access_token', app.controller.wechat.access_token
-  app.post '/menu', app.controller.wechat.menu
+  return
