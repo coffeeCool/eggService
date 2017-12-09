@@ -1,18 +1,18 @@
-import source from '../config/config.default'
+import config from '../config/config.default'
 import dd from 'ddeyes'
 
 export default (app) ->
   class usersService extends app.Service
     constructor: (ctx) ->
       super ctx
-      @root = source.source.leanCloud.userBaseUri
+      @root = config.leanCloud.userBaseUri
       @
 
     request: (url, opts) ->
       url = "#{@root}#{url}"
       opts = {
         headers: {
-          source.source.leanCloud.headers...
+          config.leanCloud.headers...
           (
             do ->
               if opts?.headers_extra?

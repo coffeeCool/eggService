@@ -1,18 +1,18 @@
-import source from '../config/config.default.coffee'
+import config from '../config/config.default'
 import dd from 'ddeyes'
 
 export default (app) ->
   class TodosService extends app.Service
     constructor: (ctx) ->
       super ctx
-      @root = source.source.leanCloud.classBaseUri
+      @root = "#{config.leanCloud.classBaseUri}/#{config.leanCloud.className}"
       @
 
     request: (url, opts) ->
       url = "#{@root}#{url}"
       opts = {
         headers: {
-          source.source.leanCloud.headers...
+          config.leanCloud.headers...
           (
             do ->
               if opts?.headers_extra?
@@ -26,7 +26,7 @@ export default (app) ->
 
     # create class todo and return this class todo
     create: (params) ->
-      result = await @request "/#{params.className}?fetchWhenSave=true"
+      result = await @request "?fetchWhenSave=true"
       ,
         method: 'post'
         data: params
@@ -36,7 +36,7 @@ export default (app) ->
       
     # get the class one todo information
     fetch: (params) ->
-      result = await @request "/#{params.className}/#{params.objectId}"
+      result = await @request "/#{params.objectId}"
       ,
         method: 'get'
         data: params
@@ -46,7 +46,7 @@ export default (app) ->
 
     # get the class todos information
     reload: (params) ->
-      result = await @request "/#{params.className}"
+      result = await @request ""
       ,
         method: 'get'
         data: params
@@ -56,7 +56,7 @@ export default (app) ->
 
     # updata the class todo
     patch: (params) ->
-      result = await @request "/#{params.className}/#{params.objectId}?fetchWhenSave=true"
+      result = await @request "/#{params.objectId}?fetchWhenSave=true"
       ,
         method: 'put'
         data: params
@@ -66,7 +66,7 @@ export default (app) ->
 
     # delete the class todo
     remove: (params) ->
-      result = await @request "/#{params.className}/#{params.objectId}"
+      result = await @request "/#{params.objectId}"
       ,
         method: 'delete'
         data: params
