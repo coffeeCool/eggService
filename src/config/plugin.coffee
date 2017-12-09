@@ -1,3 +1,4 @@
-exports.validate = 
-  enable: true
-  package: 'egg-validate'
+export default
+  validate:
+    enable: true
+    package: 'egg-validate'
